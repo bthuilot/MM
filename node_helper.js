@@ -4,7 +4,7 @@ module.exports = NodeHelper.create({
 
   start: function(){
     Log.info("Starting node helper for: " + this.name);
-  }
+  },
 
   socketNotificationReceived: function(notification, payload) {
 	   if(notification == "request-quote"){
