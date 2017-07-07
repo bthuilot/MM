@@ -2,7 +2,6 @@ Module.register("MMM-QuotesFromReddit",{
 
 	// Default module config.
 	defaults: {
-		position: 'lower_third',
 		updateInterval: 30000,
 		fadeSpeed: 4000
 	},
@@ -30,5 +29,5 @@ Module.register("MMM-QuotesFromReddit",{
 		wrapper.appendChild(quote);
 
 		return wrapper;
-	}
+	},
 });
