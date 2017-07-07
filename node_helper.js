@@ -1,3 +1,4 @@
+var fetch = require('node-fetch');
 var NodeHelper = require("node_helper");
 module.exports = NodeHelper.create({
 
@@ -6,7 +7,6 @@ module.exports = NodeHelper.create({
   },
 
   socketNotificationReceived: function(notification, payload) {
-    var fetch = require('node-fetch');
     fetch('https://www.reddit.com/r/quotes/random/.json')
       .then(function(res) {
         return res.json();
