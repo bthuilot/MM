@@ -2,6 +2,10 @@ var NodeHelper = require("node_helper");
 var fetch = require('node-fetch');
 module.exports = NodeHelper.create({
 
+  start: function(){
+    Log.info("Starting node helper for: " + this.name);
+  }
+
   socketNotificationReceived: function(notification, payload) {
 	   if(notification == "request-quote"){
        fetch('https://www.reddit.com/r/quotes/random/.json')
