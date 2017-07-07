@@ -1,3 +1,4 @@
+var rawQuote = "Start";
 Module.register("MMM-QuotesFromReddit",{
 
 	// Default module config.
@@ -5,6 +6,7 @@ Module.register("MMM-QuotesFromReddit",{
 		updateInterval: 30000,
 		fadeSpeed: 4000
 	},
+
 
 	start: function() {
 		Log.info("Starting module: " + this.name);
@@ -14,39 +16,19 @@ Module.register("MMM-QuotesFromReddit",{
 		}, this.config.updateInterval);
 	},
 
-	getQuote: function(){
-		var request = new XMLHttpRequest();
-		request.open('GET', 'https://www.reddit.com/r/quotes/random/.json', true);
-
-		request.onreadystatechange = function() {
-		  if (this.readyState === 4) {
-		    if (this.status >= 200 && this.status < 400) {
-		      // Success!
-		      return JSON.parse(this.responseText)[0]['data']['children'][0]['data']['title'];
-		    } else {
-		      // Error :(
-		    }
-		  }
-		};
-
-		request.send();
-		request = null;
+	socketNotificationReceived: function(notification, payload) {
+		if(notification == "new-quote"){
+			rawQuote = payload;
+		}
 	},
 
 	// Override dom generator.
 	getDom: function() {
-		/*this.sendSocketNotification('request-quote', null);
-		socketNotificationReceived: function(notification, payload) {
-			if(notification == "new-quote"){
-				var rawQuote = payload;
-			}
-		};*/
-		var rawQuote = this.getQuote();
 		var quote = document.createTextNode(rawQuote);
 		var wrapper = document.createElement("div");
 		wrapper.className = "thin xlarge bright";
 		wrapper.appendChild(quote);
-
+		this.sendSocketNotification('request-quote', null);
 		return wrapper;
 	},
 });
