@@ -1,0 +1,26 @@
+{
+  "name": "mmm-quotesfromreddit",
+  "version": "1.0.0",
+  "description": "Gets random quotes from /r/quotes and displays it on your magic mirror",
+  "main": "MMM-QuotesFromReddit.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bthuilot/MMM-QuotesFromReddit.git"
+  },
+  "keywords": [
+    "Magic",
+    "Mirror"
+  ],
+  "author": "Bryce Thuilot",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bthuilot/MMM-QuotesFromReddit/issues"
+  },
+  "homepage": "https://github.com/bthuilot/MMM-QuotesFromReddit#readme",
+  "dependencies": {
+    "node-fetch": "^1.7.1"
+  }
+}
