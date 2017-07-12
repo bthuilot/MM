@@ -14,6 +14,5 @@ module.exports = NodeHelper.create({
             self.sendSocketNotification('new-quote', result[0]['data']['children'][0]['data']['title']);
           }
       });
-    //this.sendSocketNotification('new-quote', a[0]['data']['children'][0]['data']['title']);
   },
 });
