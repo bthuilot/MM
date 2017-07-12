@@ -1,4 +1,3 @@
-var rawQuote = "Start";
 Module.register("MMM-QuotesFromReddit",{
 
 	// Default module config.

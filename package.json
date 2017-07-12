@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/bthuilot/MMM-QuotesFromReddit#readme",
   "dependencies": {
-    "node-fetch": "^1.7.1"
+    "request": "^2.81.0"
   }
 }
