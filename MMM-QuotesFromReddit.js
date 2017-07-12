@@ -1,3 +1,4 @@
+var rawQuote = "Loading..."
 Module.register("MMM-QuotesFromReddit",{
 
 	// Default module config.
@@ -18,7 +19,7 @@ Module.register("MMM-QuotesFromReddit",{
 
 	socketNotificationReceived: function(notification, payload) {
 		if(notification == "new-quote"){
-			if(rawQuote == "Loading"){
+			if(rawQuote == "Loading..."){
 				rawQuote = payload;
 				this.updateDom();
 			}else{
@@ -31,7 +32,7 @@ Module.register("MMM-QuotesFromReddit",{
 	getDom: function() {
 		var quote = document.createTextNode(rawQuote);
 		var wrapper = document.createElement("div");
-		rawQuote == "Loading" ? wrapper.className = "thin large dim" : wrapper.className = "thin xlarge bright";
+		rawQuote == "Loading..." ? wrapper.className = "thin large dim" : wrapper.className = "thin xlarge bright";
 		wrapper.className = "thin xlarge bright";
 		wrapper.appendChild(quote);
 		this.sendSocketNotification('request-quote', null);
