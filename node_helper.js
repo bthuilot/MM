@@ -1,5 +1,5 @@
-var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-var NodeHelper = require("node_helper");
+var NodeHelper = require('node_helper');
+var request = require('request');
 module.exports = NodeHelper.create({
 
   start: function(){
@@ -7,19 +7,13 @@ module.exports = NodeHelper.create({
   },
 
   socketNotificationReceived: function(notification, payload) {
-    var xhr = new XMLHttpRequest();
     var self = this;
-		xhr.open("GET", url, true);
-		xhr.onreadystatechange = function() {
-			if (this.readyState === 4) {
-				if (this.status === 200) {
-					this.sendSocketNotification('new-quote',  JSON.parse(this.response)[0]['data']['children'][0]['data']['title']);;
-				} else {
-					console.log(self.name + "Could not load Quotes but doesnt matter cause i cant trouble shoot.");
-				}
-			}
-		};
-		xhr.send();
+    request({ url: 'https://www.reddit.com/r/quotes/random/.json', method: 'GET' }, function (error, response, body) {
+          if (!error && response.statusCode == 200) {
+            var result = JSON.parse(body);
+            self.sendSocketNotification('new-quote', result[0]['data']['children'][0]['data']['title']);
+          }
+      });
     //this.sendSocketNotification('new-quote', a[0]['data']['children'][0]['data']['title']);
   },
 });
