@@ -6,7 +6,7 @@ A magic mirror module that is to replace the compliments module. It pulls a rand
 
 To install simply clone this repository into the `modules` folder within the `MagicMirror` folder. Then run npm install to install necessary packages.
 
-```bash
+```shell
 cd ~/MagicMirror/modules
 git clone https://github.com/bthuilot/MMM-QuotesFromReddit.git
 npm install
@@ -24,4 +24,4 @@ I Would recommend removing the compliments module and putting this in place
 }
 ```
 
-It should be said that this module isn't perfect due to the nature of reddit and the fact that the posts are selected at random but it's cool in the sense that you never need to 
+It should be said that this module isn't perfect due to the nature of reddit and the fact that the posts are selected at random but it's cool in the sense that you never need to

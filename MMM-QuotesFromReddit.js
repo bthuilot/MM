@@ -4,7 +4,7 @@ Module.register("MMM-QuotesFromReddit",{
 	// Default module config.
 	defaults: {
 		updateInterval: 30000,
-		fadeSpeed: 4000
+		fadeSpeed: 4000,
 	},
 
 
@@ -32,7 +32,7 @@ Module.register("MMM-QuotesFromReddit",{
 	getDom: function() {
 		var quote = document.createTextNode(rawQuote);
 		var wrapper = document.createElement("div");
-		rawQuote == "Loading..." ? wrapper.className = "thin large dim" : wrapper.className = "thin xlarge bright";
+		(rawQuote == "Loading...") ? wrapper.className = "thin large dim" : wrapper.className = "thin xlarge bright";
 		wrapper.className = "thin xlarge bright";
 		wrapper.appendChild(quote);
 		this.sendSocketNotification('request-quote', null);
