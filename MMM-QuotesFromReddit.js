@@ -19,15 +19,16 @@ Module.register("MMM-QuotesFromReddit",{
 
   getNewQuote: function () {
     const http = new XMLHttpRequest();
+    var self = this;
     http.onreadystatechange = () => {
       if (http.readyState == 4 && http.status == 200) {
         const result = JSON.parse(http.responseText);
         quote = result[0]['data']['children'][0]['data']['title']
+        self.updateDom(self.config.fadeSpeed);
       }
     }
     http.open('GET', URL);
     http.send
-    self.updateDom(self.config.fadeSpeed);
   },
 
 	// Override dom generator.
