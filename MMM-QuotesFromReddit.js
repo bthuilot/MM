@@ -11,7 +11,7 @@ Module.register("MMM-QuotesFromReddit",{
 	start: function() {
 		Log.info("Starting module: " + this.name);
 		var self = this;
-		this.sendSocketNotification('request-quote', null);
+    self.getNewQuote();
 		setInterval(function() {
 			self.getNewQuote();
     }, this.config.updateInterval);
