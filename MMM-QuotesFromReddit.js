@@ -21,7 +21,7 @@ Module.register("MMM-QuotesFromReddit",{
     const URL = 'https://www.reddit.com/r/quotes/random/.json';
     const http = new XMLHttpRequest();
     var self = this;
-    http.onreadystatechange = () => {
+    http.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         const result = JSON.parse(this.responseText);
         quote = result[0]['data']['children'][0]['data']['title']
@@ -29,7 +29,7 @@ Module.register("MMM-QuotesFromReddit",{
       }
     }
     http.open('GET', URL);
-    http.send()
+    http.send();
   },
 
 	// Override dom generator.
