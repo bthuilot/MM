@@ -20,7 +20,5 @@
     "url": "https://github.com/bthuilot/MMM-QuotesFromReddit/issues"
   },
   "homepage": "https://github.com/bthuilot/MMM-QuotesFromReddit#readme",
-  "dependencies": {
-    "request": "^2.81.0"
-  }
+  "dependencies": {}
 }

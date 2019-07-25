@@ -1,6 +1,6 @@
-var rawQuote = "Loading..."
 Module.register("MMM-QuotesFromReddit",{
 
+  let quote;
 	// Default module config.
 	defaults: {
 		updateInterval: 30000,
@@ -18,23 +18,17 @@ Module.register("MMM-QuotesFromReddit",{
 	},
 
 	socketNotificationReceived: function(notification, payload) {
-		if(notification == "new-quote"){
-			if(rawQuote == "Loading..."){
-				rawQuote = payload;
-				this.updateDom();
-			}else{
-				rawQuote = payload;
-			}
-		}
+		if(notification === "new-quote"){
+      this.quote = payload;
+    }
 	},
 
 	// Override dom generator.
 	getDom: function() {
-		var quote = document.createTextNode(rawQuote);
+		const quoteNode = document.createTextNode(this.quote || 'Loading...');
 		var wrapper = document.createElement("div");
-		(rawQuote == "Loading...") ? wrapper.className = "thin large dim" : wrapper.className = "thin xlarge bright";
-		wrapper.className = "thin xlarge bright";
-		wrapper.appendChild(quote);
+	  wrapper.className = `thin large ${this.quote ? 'bright' : 'dim'}`;
+		wrapper.appendChild(quoteNode);
 		this.sendSocketNotification('request-quote', null);
 		return wrapper;
 	},

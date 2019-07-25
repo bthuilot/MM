@@ -1,5 +1,7 @@
 var NodeHelper = require('node_helper');
-var request = require('request');
+
+const URL = 'https://www.reddit.com/r/quotes/random/.json';
+
 module.exports = NodeHelper.create({
 
   start: function(){
@@ -8,11 +10,14 @@ module.exports = NodeHelper.create({
 
   socketNotificationReceived: function(notification, payload) {
     var self = this;
-    request({ url: 'https://www.reddit.com/r/quotes/random/.json', method: 'GET' }, function (error, response, body) {
-          if (!error && response.statusCode == 200) {
-            var result = JSON.parse(body);
-            self.sendSocketNotification('new-quote', result[0]['data']['children'][0]['data']['title']);
-          }
-      });
+    const http = new XMLHttpRequest();
+    http.onreadystatechange = () => {
+      if (http.readyState == 4 && http.status == 200) {
+          const result = JSON.parse(http.responseText);
+          self.sendSocketNotification('new-quote', result[0]['data']['children'][0]['data']['title']);
+      }
+    }
+    http.open('GET', URL);
+    http.send
   },
 });
