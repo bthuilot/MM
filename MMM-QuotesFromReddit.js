@@ -18,17 +18,18 @@ Module.register("MMM-QuotesFromReddit",{
 	},
 
   getNewQuote: function () {
+    const URL = 'https://www.reddit.com/r/quotes/random/.json';
     const http = new XMLHttpRequest();
     var self = this;
     http.onreadystatechange = () => {
-      if (http.readyState == 4 && http.status == 200) {
-        const result = JSON.parse(http.responseText);
+      if (this.readyState == 4 && this.status == 200) {
+        const result = JSON.parse(this.responseText);
         quote = result[0]['data']['children'][0]['data']['title']
         self.updateDom(self.config.fadeSpeed);
       }
     }
     http.open('GET', URL);
-    http.send
+    http.send()
   },
 
 	// Override dom generator.
