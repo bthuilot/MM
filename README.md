@@ -33,4 +33,4 @@ An example quote
 
 Quote with the entire mirror
 
-![Quote with mirror](quote_whole_mirror.png)
+![Quote with mirror](quote_with_mirror.png)
