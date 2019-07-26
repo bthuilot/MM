@@ -23,3 +23,14 @@ I Would recommend removing the `compliments` module and putting this in place
 ```
 
 _Side note:_ Keep in mind this is randomly picking a post from a subreddit so there will be some posts where the title is not  a quote
+
+## Screen Shots
+
+An example quote
+
+![Example Quote](quote_standalone.png)
+
+
+Quote with the entire mirror
+
+![Quote with mirror](quote_whole_mirror.png)
