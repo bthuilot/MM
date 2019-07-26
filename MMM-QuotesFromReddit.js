@@ -36,7 +36,7 @@ Module.register("MMM-QuotesFromReddit",{
 	getDom: function() {
 		const quoteNode = document.createTextNode(quote || 'Loading...');
 		var wrapper = document.createElement("div");
-	  wrapper.className = `thin large ${quote ? 'bright' : 'dim'}`;
+	  wrapper.className = `thin medium ${quote ? 'bright' : 'dim'}`;
 		wrapper.appendChild(quoteNode);
 		return wrapper;
 	},
